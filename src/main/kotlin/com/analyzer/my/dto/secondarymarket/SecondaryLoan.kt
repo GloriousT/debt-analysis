@@ -1,5 +1,6 @@
 package com.analyzer.my.dto.secondarymarket
 
+import com.analyzer.my.dto.BuybackGuarantee
 import com.analyzer.my.dto.PaymentTerm
 import java.time.LocalDate
 
@@ -21,7 +22,7 @@ data class SecondaryLoan(
     val amountAvailableForInvestment: Float,
     val price: Float,
     val discountOrPremium: Float,
-    val buybackGuarantee: String,
+    val buybackGuarantee: BuybackGuarantee,
     val myInvestment: Float,
     val currency: String,
     val borrowerApr: Float?
@@ -29,4 +30,5 @@ data class SecondaryLoan(
 
     fun isLate() = termInMonths.isLate()
     fun isNotLate() = termInMonths.isNotLate()
+    fun isGuaranteed() = buybackGuarantee == BuybackGuarantee.YES
 }
