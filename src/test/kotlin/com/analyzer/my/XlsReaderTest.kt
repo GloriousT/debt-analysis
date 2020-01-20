@@ -114,4 +114,14 @@ class XlsReaderTest {
                 "4297361-01",
                 "5321626-01")
     }
+
+    @Test
+    fun should() {
+        val loans = read("secondary-market/20200120-secondary-market.xlsx")
+
+        loans.ytmGreaterOrEqualThan(36)
+                .orderByClosingDate()
+                .peek(5)
+                .print()
+    }
 }

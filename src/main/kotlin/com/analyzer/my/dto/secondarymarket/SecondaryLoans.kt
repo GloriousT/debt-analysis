@@ -21,6 +21,14 @@ data class SecondaryLoans(private val loans: List<SecondaryLoan>) {
     fun guaranteed() = loans.filter { it.isGuaranteed() }
 
     fun currency(currency: String) = loans.filter { it.currency.toLowerCase() == currency.toLowerCase() }
+
+    fun ytmGreaterOrEqualThan(ytm: Int) = loans.filter { it.ytm >= ytm }
+
+    fun orderByClosingDate() = SecondaryLoans(loans.sortedBy { it.closingDate })
+
+    fun peek(numberOfItems: Int) = SecondaryLoans(loans.subList(0, numberOfItems - 1))
+
+    fun print() = run { loans.forEach { println(it) } }
 }
 
 private fun Iterable<SecondaryLoan>.filter(predicate: (SecondaryLoan) -> Boolean): SecondaryLoans =
