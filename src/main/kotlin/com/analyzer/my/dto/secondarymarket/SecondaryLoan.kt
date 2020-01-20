@@ -23,6 +23,7 @@ data class SecondaryLoan(
     val price: Float,
     val discountOrPremium: Float,
     val buybackGuarantee: BuybackGuarantee,
+    val scheduleExtension: String,
     val myInvestment: Float,
     val currency: String,
     val borrowerApr: Float?

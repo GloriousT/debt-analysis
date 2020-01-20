@@ -56,22 +56,23 @@ class XlsReader private constructor(private val excelFile: FileInputStream) {
             price = row[15].toFloat(),
             discountOrPremium = row[16].toFloat(),
             buybackGuarantee = BuybackGuarantee.fromValue(row[17]),
-            myInvestment = row[18].toFloat(),
-            currency = row[19],
+            scheduleExtension = row[18],
+            myInvestment = row[19].toFloat(),
+            currency = row[20],
             borrowerApr = readBorrowerApr(row)
         )
     }
 
     private fun readBorrowerApr(row: List<String>): Float? {
-        return if (row.size == 21) {
-            row[20].toFloat()
+        return if (row.size == 22) {
+            row[21].toFloat()
         } else {
             null
         }
     }
 
     private fun rejectIfWrongNumberOfColumns(sheet: XSSFSheet) {
-        val expectedNumberOfColumns = 21
+        val expectedNumberOfColumns = 22
         val firstRow = sheet.first()
         val actualNumberOfColumns = firstRow.toList().size
         if (actualNumberOfColumns != expectedNumberOfColumns) {
@@ -85,7 +86,4 @@ class XlsReader private constructor(private val excelFile: FileInputStream) {
     }
 }
 
-fun main() {
-    // println(LocalDate.parse("28.12.2017", secondaryMarketDateFormat))
-    println(8.0.toInt())
-}
+fun read(file: String) = XlsReader.fromResources(file).readSecondaryLoans()
