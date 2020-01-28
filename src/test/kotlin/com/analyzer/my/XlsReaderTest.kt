@@ -117,11 +117,12 @@ class XlsReaderTest {
 
     @Test
     fun should() {
-        val loans = read("secondary-market/20200120-secondary-market.xlsx")
+        val loans = read("secondary-market/20200128-secondary-market.xlsx")
 
-        loans.ytmGreaterOrEqualThan(36)
-                .orderByClosingDate()
-                .peek(5)
-                .print()
+//        loans.ytmGreaterOrEqualThan(36)
+//                .orderByClosingDate()
+//                .peek(20)
+//                .print()
+        loans.sumAllLoans()
     }
 }
