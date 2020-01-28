@@ -2,7 +2,7 @@ package com.analyzer.my
 
 import com.analyzer.my.dto.PaymentTerm
 import com.analyzer.my.datetime.secondaryMarketDateFormat
-import com.analyzer.my.dto.BuybackGuarantee
+import com.analyzer.my.dto.QuasiBoolean
 import com.analyzer.my.dto.secondarymarket.SecondaryLoan
 import com.analyzer.my.dto.secondarymarket.SecondaryLoans
 import org.apache.poi.ss.usermodel.Cell
@@ -55,8 +55,8 @@ class XlsReader private constructor(private val excelFile: FileInputStream) {
             amountAvailableForInvestment = row[14].toFloat(),
             price = row[15].toFloat(),
             discountOrPremium = row[16].toFloat(),
-            buybackGuarantee = BuybackGuarantee.fromValue(row[17]),
-            scheduleExtension = row[18],
+            buybackGuarantee = QuasiBoolean.fromValue(row[17]),
+            scheduleExtension = QuasiBoolean.fromValue(row[18]),
             myInvestment = row[19].toFloat(),
             currency = row[20],
             borrowerApr = readBorrowerApr(row)

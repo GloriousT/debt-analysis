@@ -1,6 +1,6 @@
 package com.analyzer.my.dto
 
-enum class BuybackGuarantee(private val isGuaranteed: Boolean) {
+enum class QuasiBoolean(private val value: Boolean) {
 
     YES(true), NO(false);
 
