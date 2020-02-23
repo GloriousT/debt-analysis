@@ -50,6 +50,8 @@ data class SecondaryLoans(private val loans: List<SecondaryLoan>) {
         println("Total price with discount $priceTotalWithDiscount")
         println("Total discount $discountTotal")
     }
+
+    fun sortedByYield() = loans().sorted()
 }
 
 private fun Iterable<SecondaryLoan>.filter(predicate: (SecondaryLoan) -> Boolean): SecondaryLoans =
